@@ -11,6 +11,7 @@ datasource db {
 }
 
 model Post {
+  // @@map("posts") per sovrascrivere nome tabella 
   id        Int      @id @default(autoincrement())
   title     String   @db.VarChar(50)
   slug      String   @unique

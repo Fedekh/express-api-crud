@@ -5,7 +5,6 @@ Vi chiediamo di definire i seguenti endpoint:
 POST /posts per creare un nuovo post.
 GET /posts/:slug per recuperare un post utilizzando il suo slug.
 GET /posts per recuperare tutti i post presenti nel database, con la possibilità di filtrare 
-
 per:
 Post pubblicati.
 Post che contengono una determinata parola nel titolo o nel contenuto.
@@ -36,18 +35,22 @@ prima migration:
 npx prisma migrate dev --name prima_migration
 
 scaffolding iniziale:
+
 const express = require("express");
-const dotenv = require("dotenv");
+require("dotenv").config();
+const routerPost = require("./routers/post");
 const app = express();
 const port = +process.env.PORT || 5555;
-require("dotenv").config();
 const { log } = require("console");
 
-//per usare i json
+//middleware riceve in input i dati e nel output json
 app.use(express.json());
+
+app.use("/posts", routerPost);
 
 
 //avvio app
 app.listen(port, () => {
   log(`App avviata su http://localhots:${port}`);
 });
+

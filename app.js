@@ -1,18 +1,17 @@
 const express = require("express");
-const dotenv = require("dotenv");
+require("dotenv").config();
+const routerPost = require("./routers/post");
 const app = express();
 const port = +process.env.PORT || 5555;
-require("dotenv").config();
 const { log } = require("console");
 
-
-//middleware riceve in input i dati e nel output json
+//middleware per parsing body
 app.use(express.json());
 
-
+app.use("/post", routerPost);
 
 
 //avvio app
 app.listen(port, () => {
-  log(`App avviata su http://localhots:${port}`);
+  log(`App avviata su https://localhost:${port}`);
 });
