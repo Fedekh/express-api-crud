@@ -17,9 +17,37 @@ Implementare la paginazione.
 Gestite gli errori, restituendo uno stato HTTP 404 e un messaggio di errore, nel caso in cui una rotta non sia stata trovata.
 Gestite gli errori, restituendo uno stato HTTP 500 e un messaggio di errore, nel caso in cui venga sollevata un’eccezione dal Prisma Client.
 
-
+----------------------------------------------------------------- 
 installazioni necessarie:
 npm init
 npm i dotenv express @prisma/client
 npm install -D nodemon
 npm install -D prisma
+
+inizializzazione di Prisma, utilizzando MySQL come DBMS.
+
+npx prisma init --datasource-provider mysql
+
+in file .env:
+DATABASE_URL="mysql://root:root@localhost:8889/blog"
+
+
+prima migration:
+npx prisma migrate dev --name prima_migration
+
+scaffolding iniziale:
+const express = require("express");
+const dotenv = require("dotenv");
+const app = express();
+const port = +process.env.PORT || 5555;
+require("dotenv").config();
+const { log } = require("console");
+
+//per usare i json
+app.use(express.json());
+
+
+//avvio app
+app.listen(port, () => {
+  log(`App avviata su http://localhots:${port}`);
+});
