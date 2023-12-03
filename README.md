@@ -16,3 +16,10 @@ BONUS:
 Implementare la paginazione.
 Gestite gli errori, restituendo uno stato HTTP 404 e un messaggio di errore, nel caso in cui una rotta non sia stata trovata.
 Gestite gli errori, restituendo uno stato HTTP 500 e un messaggio di errore, nel caso in cui venga sollevata un’eccezione dal Prisma Client.
+
+
+installazioni necessarie:
+npm init
+npm i dotenv express @prisma/client
+npm install -D nodemon
+npm install -D prisma
